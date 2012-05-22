@@ -1,17 +1,17 @@
 class CommitExtractor:
     def __init__(self, commit_text):
         self.commit_text = commit_text
-    
+
     def get_title(self):
         full_title = self.commit_text.split("\n")[0].strip()
         if len(full_title) > 50:
             return "%s..." % full_title[:47].strip()
         else:
             return full_title
-    
+
     def get_body(self):
         return "\n".join(self.commit_text.split("\n")[1:]).strip()
-    
+
     def as_dict(self):
         return {'title': self.get_title(), 'body': self.get_body()}
 
